@@ -16,7 +16,7 @@ It's possible that some fields are private, just change them to public if needed
 #### PoseStack:  
 PoseStack is used by the new rendersystem, you will probably see it often and I personally didn't know how to get it or use it.  
 Getting:   
-In mose cases the poseStack is already in the method parameters, if so just use this. It is probably named like `p_92745_` or something.  
+In most cases the poseStack is already in the method parameters, if so just use this. It is probably named like `p_92745_` or something.  
 If it's not already passed, you can create a new Instance with `new PoseStack()` but avoid it at all cost.  
 Usage:  
 You can modify the objects with it, for example you can scale it etc.  
@@ -153,6 +153,17 @@ public class TutorialScreen extends Screen {
 }
 
 ```
+
+- Customize the loading/splash screen
+The screen you are looking for is called `LoadingOverlay` and is an overlay. 
+You can do most things like in a normal screen tho you have to make sure the objects you use are initialized. 
+For example if you want to draw a string on the screen you have to make sure that Minecraft.font/fontManager/textureManager is initialized 
+or else it won't work as you want it to. If you want to draw an image you can just copy Mojang's approach and add a custom image loader. 
+If you have trouble with the colors of custom added images, call `RenderSystem.defaultBlendFunc();` before rendering the image.
+
+If you want to change the background color look at the field `LOGO_BACKGROUND_COLOR`. There you can change the RGB value. 
+`LOGO_BACKGROUND_COLOR_DARK` is the dark color which will be used if monochrome logo is enabled in options. You could customize that too.
+
 
 If I find small useful tricks I will update this.  
 I hope I helped some of you a bit :)
